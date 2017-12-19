@@ -14,8 +14,6 @@ except:
 #Gives format to the url content
 soup = BeautifulSoup(r.content, "lxml")
 soup.prettify()
-#for link in soup.find_all("a"):
- #   print link.get("href")
 
 #Finds the center block search class which contents al the products listed in the page
 products=soup.find_all("div", {"class":"center_block_search"})
