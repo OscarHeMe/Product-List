@@ -3,6 +3,9 @@ import re
 import json
 from bs4 import BeautifulSoup
 
+#data will be the dictionary to store all products' data
+data={}
+
 #Defines the Url to access
 url="https://www.farmalisto.com.mx/2158-productos-masculinos"
 try:
@@ -22,8 +25,6 @@ products=soup.find_all("div", {"class":"center_block_search"})
 with open("products.json", "w") as f:
 #This loop gets all the products' attributes
     for item in products:
-        #data will be the dictionary to store all products' data
-        data={}
         #Name Product
         data["Name Product"]= item.contents[2].find_all("a")[0].get("title")
         #Price
@@ -38,5 +39,5 @@ with open("products.json", "w") as f:
             data["id"]= re.findall(r'id_product=(.*)&', str(item.contents[5].find_all("a")[0].get("href")))[0]
         except:
             pass
-        json.dump(data, f)
+    json.dump(data, f)
 print ("Ready")
