@@ -15,7 +15,7 @@ except:
     exit()
 
 #Gives format to the url content
-soup = BeautifulSoup(r.content, "html.parser")
+soup = BeautifulSoup(r.content, "html")
 soup.prettify()
 
 #Finds the center block search class which contents al the products listed in the page
